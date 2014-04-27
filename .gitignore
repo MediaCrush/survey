@@ -5,5 +5,3 @@ local/
 lib/
 *.swp
 *.rdb
-storage/
-static/
