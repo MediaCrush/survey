@@ -36,12 +36,15 @@ through.</p>
     </video>
     <label for="ogv-mediacrush-current">
         <input type="checkbox" name="q-ogv-mediacrush-current" id="ogv-mediacrush-current" />
-        <input type="hidden" name="q-ogv-mediacrush-current" value="false" />
+        <input type="hidden" name="q-ogv-mediacrush-current" id="ogv-mediacrush-current" />
         This video played correctly
     </label>
     <textarea name="notes" placeholder="Share any other comments you have here"></textarea>
-    <div>This will be sent along with your reponses:</div>
+    <p>This will be sent along with your reponses:</p>
     <pre>{{ua}}</pre>
+    <p>If this is not a reasonable representation of the device you're using, please add additional
+    information in the notes. It would be valuable, for example, to know the specific model of Android
+    you use.</p>
     <input type="submit" value="Submit" />
 </form>
 {% endblock %}
