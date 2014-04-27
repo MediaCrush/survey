@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>MediaCrush Technical Survey</h2>
+<p>We've prepared a few videos for you to test so we can try to identify what might be causing problems
+for you. At the end of this survey, we'll log your answers and information about your system (like what
+web browser you're using). This is anonymous, but you can put your email address in the notes at the end
+if you want us to get in touch.</p>
+<p>Please try to view each video, then check the box if it worked well. If it did not work well, leave
+the box unchecked. Look for things like broken audio, black screens, or error messages. You don't need
+to watch every video all the way through, but you should try to watch at least one of them all the way
+through.</p>
+<p>Thanks in advance for helping us find the best way to play video for you!</p>
+
+<form action="/post", method="POST">
+    <h3>Video A</h3>
+    <video poster="https://cdn.mediacru.sh/pvn5iVbW9pUL.jpg" controls>
+        <source src="https://cdn.mediacru.sh/pvn5iVbW9pUL.webm" type="video/webm"></source>
+    </video>
+    <label for="webm-mediacrush-current">
+        <input type="checkbox" name="q-webm-mediacrush-current" id="webm-mediacrush-current" />
+        <input type="hidden" name="q-webm-mediacrush-current" value="false" />
+        This video played correctly
+    </label>
+    <h3>Video B</h3>
+    <video poster="https://cdn.mediacru.sh/pvn5iVbW9pUL.jpg" controls>
+        <source src="https://cdn.mediacru.sh/pvn5iVbW9pUL.mp4" type="video/mp4"></source>
+    </video>
+    <label for="mp4-mediacrush-current">
+        <input type="checkbox" name="q-mp4-mediacrush-current" id="mp4-mediacrush-current" />
+        <input type="hidden" name="q-mp4-mediacrush-current" value="false" />
+        This video played correctly
+    </label>
+    <h3>Video C</h3>
+    <video poster="https://cdn.mediacru.sh/pvn5iVbW9pUL.jpg" controls>
+        <source src="https://cdn.mediacru.sh/pvn5iVbW9pUL.ogv" type="video/ogg"></source>
+    </video>
+    <label for="ogv-mediacrush-current">
+        <input type="checkbox" name="q-ogv-mediacrush-current" id="ogv-mediacrush-current" />
+        <input type="hidden" name="q-ogv-mediacrush-current" value="false" />
+        This video played correctly
+    </label>
+    <textarea name="notes" placeholder="Share any other comments you have here"></textarea>
+    <div>This will be sent along with your reponses:</div>
+    <pre>{{ua}}</pre>
+    <input type="submit" value="Submit" />
+</form>
+{% endblock %}

@@ -1,0 +1,10 @@
+*.pyc
+bin/
+config.ini
+include/
+local/
+lib/
+*.swp
+*.rdb
+storage/
+static/
