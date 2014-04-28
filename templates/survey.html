@@ -9,15 +9,15 @@ if you tried to watch at least one of them all the way through. Thanks!</p>
 <p>Warning: unless otherwise noted, all of these have audio. If you see one without audio, that means it's broken and you
 shouldn't check the box.</p>
 
-<form action="/post", method="POST">
+<form action="/post" method="POST">
     <h3>Video A</h3>
     <!--
         This one is the exact same as most videos on MediaCrush right now.
     -->
     <video poster="/static/poster.jpg" controls>
-        <source src="/static/videos/control.mp4" type="video/mp4"></source>
-        <source src="/static/videos/control.webm" type="video/webm"></source>
-        <source src="/static/videos/control.ogv" type="video/ogv"></source>
+        <source src="/static/videos/control.mp4" type="video/mp4" />
+        <source src="/static/videos/control.webm" type="video/webm" />
+        <source src="/static/videos/control.ogv" type="video/ogv" />
     </video>
     <label for="q-control">
         <input type="checkbox" name="q-control" id="q-control" />
@@ -30,7 +30,7 @@ shouldn't check the box.</p>
         when encoding, which supposedly improves Android support.
     -->
     <video poster="/static/poster.jpg" controls>
-        <source src="/static/videos/h264-main-profile.mp4" type="video/mp4"></source>
+        <source src="/static/videos/h264-main-profile.mp4" type="video/mp4" />
     </video>
     <label for="q-h264-main-profile">
         <input type="checkbox" name="q-h264-main-profile" id="q-h264-main-profile" />
@@ -43,7 +43,7 @@ shouldn't check the box.</p>
         their results.
     -->
     <video poster="/static/poster.jpg" controls>
-        <source src="/static/videos/does-not-exists.mp4" type="video/mp4"></source>
+        <source src="/static/videos/does-not-exists.mp4" type="video/mp4" />
     </video>
     <label for="q-expected-failure">
         <input type="checkbox" name="q-expected-failure" id="q-expected-failure" />
@@ -57,7 +57,7 @@ shouldn't check the box.</p>
         than the mp4 tests.
     -->
     <video poster="/static/poster.jpg" controls>
-        <source src="/static/videos/webm-control.webm" type="video/webm"></source>
+        <source src="/static/videos/control.webm" type="video/webm" />
     </video>
     <label for="q-webm-control">
         <input type="checkbox" name="q-webm-control" id="q-webm-control" />
@@ -70,8 +70,8 @@ shouldn't check the box.</p>
     -->
     <p>Note: This video does not have audio.</p>
     <video controls>
-        <source src="/static/videos/gfycat.webm" type="video/webm"></source>
-        <source src="/static/videos/gfycat.mp4" type="video/mp4"></source>
+        <source src="/static/videos/gfycat.webm" type="video/webm" />
+        <source src="/static/videos/gfycat.mp4" type="video/mp4" />
     </video>
     <label for="q-gfycat">
         <input type="checkbox" name="q-gfycat" id="q-gfycat" />
@@ -83,7 +83,7 @@ shouldn't check the box.</p>
         OGV control group, since I guess you never know
     -->
     <video controls>
-        <source src="/static/videos/control.ogv" type="video/ogg"></source>
+        <source src="/static/videos/control.ogv" type="video/ogg" />
     </video>
     <label for="q-ogv-control">
         <input type="checkbox" name="q-ogv-control" id="q-ogv-control" />
@@ -95,7 +95,7 @@ shouldn't check the box.</p>
         Chrome or Android.
     -->
     <video controls>
-        <source src="/static/videos/h264-high10.mp4" type="video/mp4"></source>
+        <source src="/static/videos/h264-high10.mp4" type="video/mp4" />
     </video>
     <label for="q-h264-high10">
         <input type="checkbox" name="q-h264-high10" id="q-h264-high10" />
