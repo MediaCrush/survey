@@ -5,3 +5,4 @@ local/
 lib/
 *.swp
 *.rdb
+static/videos/

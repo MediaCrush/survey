@@ -70,7 +70,6 @@ def post():
             a.user_agent = request.user_agent.string
             a.result_id = result.id
             a.question_id = q.id
-            print value.lower()
             a.value = value.lower() in ['true', 'yes', 'on']
             db.add(a)
             q.answers.append(a)

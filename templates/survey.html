@@ -1,50 +1,110 @@
 {% extends "layout.html" %}
 {% block content %}
 <h2>MediaCrush Technical Survey</h2>
-<p>We've prepared a few videos for you to test so we can try to identify what might be causing problems
-for you. At the end of this survey, we'll log your answers and information about your system (like what
-web browser you're using). This is anonymous, but you can put your email address in the notes at the end
-if you want us to get in touch.</p>
-<p>Please try to view each video, then check the box if it worked well. If it did not work well, leave
-the box unchecked. Look for things like broken audio, black screens, or error messages. You don't need
-to watch every video all the way through, but you should try to watch at least one of them all the way
-through.</p>
-<p>It's perfectly normal - expected, even - for some of these videos to fail.</p>
+<p>Hi there! Could you do us a favor and pick out which of these videos plays for you? Don't worry if
+they don't all work perfectly - we expect some to fail. After watching a video that works, please check
+the box underneath it. You don't have to watch all of them all the way through, but it would be great
+if you tried to watch at least one of them all the way through. Thanks!</p>
+
+<p>Warning: all of these have audio. If you see one without audio, that means it's broken and you
+shouldn't check the box.</p>
 
 <form action="/post", method="POST">
     <h3>Video A</h3>
-    <video poster="https://cdn.mediacru.sh/pvn5iVbW9pUL.jpg" controls>
-        <source src="https://cdn.mediacru.sh/pvn5iVbW9pUL.webm" type="video/webm"></source>
+    <!--
+        This one is the exact same as most videos on MediaCrush right now.
+    -->
+    <video poster="/static/poster.jpg" controls>
+        <source src="/static/videos/control.mp4" type="video/mp4"></source>
+        <source src="/static/videos/control.webm" type="video/webm"></source>
+        <source src="/static/videos/control.ogv" type="video/ogv"></source>
     </video>
-    <label for="webm-mediacrush-current">
-        <input type="checkbox" name="q-webm-mediacrush-current" id="webm-mediacrush-current" />
-        <input type="hidden" name="q-webm-mediacrush-current" value="false" />
+    <label for="q-control">
+        <input type="checkbox" name="q-control" id="q-control" />
+        <input type="hidden" name="q-control" value="false" />
         This video played correctly
     </label>
     <h3>Video B</h3>
-    <video poster="https://cdn.mediacru.sh/pvn5iVbW9pUL.jpg" controls>
-        <source src="https://cdn.mediacru.sh/pvn5iVbW9pUL.mp4" type="video/mp4"></source>
+    <!--
+        This one uses the h264 main profile. MediaCrush currently uses the baseline profile
+        when encoding, which supposedly improves Android support.
+    -->
+    <video poster="/static/poster.jpg" controls>
+        <source src="/static/videos/h264-main-profile.mp4" type="video/mp4"></source>
     </video>
-    <label for="mp4-mediacrush-current">
-        <input type="checkbox" name="q-mp4-mediacrush-current" id="mp4-mediacrush-current" />
-        <input type="hidden" name="q-mp4-mediacrush-current" value="false" />
+    <label for="q-h264-main-profile">
+        <input type="checkbox" name="q-h264-main-profile" id="q-h264-main-profile" />
+        <input type="hidden" name="q-h264-main-profile" value="false" />
         This video played correctly
     </label>
     <h3>Video C</h3>
-    <video poster="https://cdn.mediacru.sh/pvn5iVbW9pUL.jpg" controls>
-        <source src="https://cdn.mediacru.sh/pvn5iVbW9pUL.ogv" type="video/ogg"></source>
+    <!--
+        This one is expected to fail. If the user says it did not fail, we can throw out
+        their results.
+    -->
+    <video poster="/static/poster.jpg" controls>
+        <source src="/static/videos/does-not-exists.mp4" type="video/mp4"></source>
     </video>
-    <label for="ogv-mediacrush-current">
-        <input type="checkbox" name="q-ogv-mediacrush-current" id="ogv-mediacrush-current" />
-        <input type="hidden" name="q-ogv-mediacrush-current" id="ogv-mediacrush-current" />
+    <label for="q-expected-failure">
+        <input type="checkbox" name="q-expected-failure" id="q-expected-failure" />
+        <input type="hidden" name="q-expected-failure" value="false" />
         This video played correctly
     </label>
-    <textarea name="notes" placeholder="Share any other comments you have here"></textarea>
-    <p>This will be sent along with your reponses:</p>
+    <h3>Video D</h3>
+    <!--
+        This is a webm control video. Most videos have mp4 prioritized, but webm seems
+        likely to work in more situations. We'll want to see if this gets more passes
+        than the mp4 tests.
+    -->
+    <video poster="/static/poster.jpg" controls>
+        <source src="/static/videos/webm-control.webm" type="video/webm"></source>
+    </video>
+    <label for="q-webm-control">
+        <input type="checkbox" name="q-webm-control" id="q-webm-control" />
+        <input type="hidden" name="q-webm-control" value="false" />
+        This video played correctly
+    </label>
+    <h3>Video E</h3>
+    <!--
+        This is a video that has been encoded by gfycat.
+    -->
+    <video controls>
+        <source src="/static/videos/gfycat.webm" type="video/webm"></source>
+        <source src="/static/videos/gfycat.mp4" type="video/mp4"></source>
+    </video>
+    <label for="q-gfycat">
+        <input type="checkbox" name="q-gfycat" id="q-gfycat" />
+        <input type="hidden" name="q-gfycat" value="false" />
+        This video played correctly
+    </label>
+    <h3>Video F</h3>
+    <!--
+        OGV control group, since I guess you never know
+    -->
+    <video controls>
+        <source src="/static/videos/control.ogv" type="video/ogg"></source>
+    </video>
+    <label for="q-ogv-control">
+        <input type="checkbox" name="q-ogv-control" id="q-ogv-control" />
+        <input type="hidden" name="q-ogv-control" value="false" />
+        This video played correctly
+    </label>
+    <!--
+        10-bit h.264. I wish this worked, but it will probably for everyone on
+        Chrome or Android.
+    -->
+    <video controls>
+        <source src="/static/videos/h264-high10.mp4" type="video/mp4"></source>
+    </video>
+    <label for="q-h264-high10">
+        <input type="checkbox" name="q-h264-high10" id="q-h264-high10" />
+        <input type="hidden" name="q-h264-high10" value="false" />
+        This video played correctly
+    </label>
+    <p>This will be sent, too:</p>
     <pre>{{ua}}</pre>
-    <p>If this is not a reasonable representation of the device you're using, please add additional
-    information in the notes. It would be valuable, for example, to know the specific model of Android
-    you use.</p>
+    <p>If this doesn't describe your device well, please add some additional notes below.</p>
+    <textarea name="notes" placeholder="Share any other comments you have here"></textarea>
     <input type="submit" value="Submit" />
 </form>
 {% endblock %}
